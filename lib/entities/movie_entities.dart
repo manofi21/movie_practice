@@ -35,4 +35,9 @@ class MovieEntities {
         ageRating: ageRating ?? this.ageRating,
         ticketPrice: ticketPrice ?? this.ticketPrice,
       );
+
+  @override
+  String toString() {
+    return 'MovieEntities(id: $id, title: $title, description: $description, releaseDate: $releaseDate, posterUrl: $posterUrl, ageRating: $ageRating, ticketPrice: $ticketPrice)';
+  }
 }
