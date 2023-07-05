@@ -1,0 +1,1 @@
+const String baseUrl = "https://seleksi-sea-2023.vercel.app/";
