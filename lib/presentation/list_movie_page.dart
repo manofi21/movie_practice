@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../repository/movie_repository.dart';
+import 'movie_card_widget.dart';
 
 class ListMoviePage extends StatefulWidget {
   const ListMoviePage({super.key});
@@ -33,24 +33,13 @@ class _ListMoviePageState extends State<ListMoviePage> {
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 400,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 10,
-              childAspectRatio: 0.5,
+              childAspectRatio: 0.667,
             ),
             itemCount: movieList.length,
             itemBuilder: (context, index) {
-              return GestureDetector(
-                child: CachedNetworkImage(
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => const SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
-                  imageUrl: movieList[index].posterUrl,
-                ),
+              return MovieCardWidget(
+                index: index,
+                movieItem: movieList[index],
               );
             },
           );
