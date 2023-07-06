@@ -1,3 +1,4 @@
+import 'package:flutter_localizations/flutter_localizations.dart'; 
 import 'package:flutter/material.dart';
 import 'package:movie_web_practice/presentation/list_movie_page.dart';
 import 'package:movie_web_practice/service/movie_service.dart';
@@ -16,9 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
       home: MultiProvider(
         providers: [
           Provider(
@@ -43,14 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  Future<void> _incrementCounter() async {
-    final movieRepository = context.read<MovieRepository>();
-    final listEntities = await movieRepository.getListEntities();
-    print('listEntities : ${listEntities.map((e) => e.toString()).toList()}');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,11 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const ListMoviePage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
