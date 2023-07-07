@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../repository/movie_repository.dart';
+import '../route/router.dart';
 import 'movie_card_widget.dart';
 
 class ListMoviePage extends StatefulWidget {
@@ -37,9 +38,17 @@ class _ListMoviePageState extends State<ListMoviePage> {
             ),
             itemCount: movieList.length,
             itemBuilder: (context, index) {
-              return MovieCardWidget(
-                index: index,
-                movieItem: movieList[index],
+              return InkWell(
+                onTap: () {
+                  navigatorKey.currentState?.pushNamed(
+                    '/detail',
+                    arguments: movieList[index],
+                  );
+                },
+                child: MovieCardWidget(
+                  index: index,
+                  movieItem: movieList[index],
+                ),
               );
             },
           );
