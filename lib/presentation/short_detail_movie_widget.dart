@@ -54,8 +54,6 @@ class ShortDetailMovieWidget extends StatelessWidget {
 
     final currencyTicketPrice = currencyIdrString(ticketPrice);
 
-    final ageRatingString = intAgeToIconRatingAge(ageRating);
-
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -90,24 +88,7 @@ class ShortDetailMovieWidget extends StatelessWidget {
               widget: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 1.3
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 5),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      ageRatingString,
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  intAgeToIconRatingAge(ageRating),
                   Text(
                     '\n(Disarankan ${ageRating.toString()} Tahun)',
                     style: const TextStyle(
