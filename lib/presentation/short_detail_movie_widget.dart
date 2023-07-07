@@ -18,7 +18,9 @@ class ShortDetailMovieWidget extends StatelessWidget {
   });
 
   Widget childItem(String title, {String? content, Widget? widget}) {
-    return Row(children: [
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
       Expanded(
         flex: 2,
         child: Text(
@@ -89,7 +91,10 @@ class ShortDetailMovieWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 5,
+                      vertical: 1.3
+                    ),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: 5),
                       borderRadius: const BorderRadius.all(
@@ -104,7 +109,7 @@ class ShortDetailMovieWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '(Disarankan ${ageRating.toString()} Tahun)',
+                    '\n(Disarankan ${ageRating.toString()} Tahun)',
                     style: const TextStyle(
                       color: Colors.white,
                     ),
